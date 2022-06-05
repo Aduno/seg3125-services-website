@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>SEG3125 Project</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../team-style.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row" id="top-bar">
+                <!-- Logo and name -->
+                <a class="col-6" href="../index.html">
+                    <div class="logo-left">
+                        <img src="/img/Tuba.svg">
+                        <h3 class="logo-text">UO Instrument Services</h3>
+                    </div>
+                </a>
+                <div class="col-6" href="../index.html">
+                    <div class="logo-right">
+                        <!-- Login -->
+                        <a href="login.html"><img src="/img/user.svg"></a>
+                        <!-- French/English button -->
+                        <a href="#"><h3 class="language-toggle">Fr</h3></a>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand">
+                <ul class="nav navbar-nav">
+                    <li class="active" id="home"><a href="../index.html">Home</a></li>
+                    <li class="nav-item dropdown" id="services">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" href="#">Services</a> 
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a class="dropdown-text" href="rental.html">Rental</a></li>
+                            <li class="dropdown-item"><a class="dropdown-text"href="lessons.html">Lessons</a></li>
+                            <li class="dropdown-item"><a class="dropdown-text"href="repair.html">Repair</a></li>
+                        </ul>
+                    </li>
+                    <li class="active" id="team"><a href="team.html">Our team</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id="team-main">
+            <div class="row slider">
+                <div class="team-member">
+                    <img src="/img/team/2.png">
+                </div>
+                <div class="team-member">
+                    <img class="center"src="/img/team/1.png">
+                </div>
+                <div class="team-member">
+                    <img src="/img/team/3.png">
+                </div>
+                <div class="team-member">
+                    <img src="/img/team/4.png">
+                </div>
+                <div class="team-member">
+                    <img  src="/img/team/5.png">
+                </div>
+            </div>
+            <div id="member-details">
+                <h1 id="member-name"></h1>
+                <p id="member-intro"></p>
+            </div>
+        </div>
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                if(document.documentElement.clientWidth<900){
+                    $('.slider').slick({
+                    infinite: true,
+                    dots: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    });
+                }
+                else{
+                    $('.slider').slick({
+                    infinite: true,
+                    dots: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    });
+                }
+                $('.slider').on('afterChange', function(){
+                    var id = $('.slick-current').attr("data-slick-index");
+                    $.getJSON("/text/members.json", function(json){ 
+                        $("#member-intro").text(json[0][id]);
+                        $("#member-name").text(json[1][id]);
+                    });
+                    // This hurts;; This project is spagetti code and so many 
+                    // bad practices. 2 weeks to make a full functioning website
+                    // is not enough when theres 4 other courses and coop interviews
+                    // are happening at the same time
+                });
+
+                $(".team-member").css({
+                    'display': 'flex',
+                    'justify-content': 'center'
+                });
+                $(".slick-prev").css({
+                    'width': '100px',
+                    'z-index': '10',
+                });
+                $(".slick-next").css({
+                    'width': '100px',
+                    'z-index': '10',
+                });
+
+            });
+          </script>
+          <script type="text/javascript">
+              $.getJSON("/text/members.json", function(json){
+                  $("#member-intro").text(json[0][0]);
+                  $("#member-name").text(json[1][0]);
+              })
+          </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    </body>
+</html>
+
+
+
+

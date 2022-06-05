@@ -1,0 +1,34 @@
+.slick-prev::before, .slick-next::before{
+    color:rgb(129, 48, 48);
+    font-size: 30px;
+}
+.slick-track{
+    width: 100%;
+}
+
+#team-main{
+    padding-top: 5vh;
+}
+
+#member-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#member-name{
+    padding-top:3vh;
+    text-align: center;
+}
+
+#member-intro{
+    width: 40%;
+    padding-top:2vh;
+}
+@media screen and (max-width: 900px){
+    .slick-prev::before, .slick-next::before{
+        font-size: 0px;
+    }
+    #member-intro{
+        width: 90%;
+    }
+}

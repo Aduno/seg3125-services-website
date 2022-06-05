@@ -1,0 +1,26 @@
+[
+    {
+        "Bass": "40",
+        "Cello": "34",
+        "Clarinet": "30",
+        "Drums": "56",
+        "Flute": "15",
+        "Guitar": "20",
+        "Saxaphone": "23",
+        "Trombone": "31",
+        "Trumpet": "30",
+        "Tuba": "59"        
+    },
+    {
+        "Bass": {"0": "Gibson", "1": "Roland", "2":"Yamaha"},
+        "Cello": {"0": "Shure", "1": "Harmon", "2":"Steinway", "3": "Yamaha"},
+        "Clarinet": {"0": "Gibson", "1": "Yamaha"},
+        "Drums": {"0": "Fender", "1": "Roland", "2":"Yamaha"},
+        "Flute": {"0": "Kawai", "1": "Roland", "2":"Yamaha"},
+        "Guitar": {"0": "Gibson", "1": "Martin&Co", "2":"Yamaha"},
+        "Saxaphone": {"0": "Conn-Selmer", "1": "Jupiter", "2":"Yamaha"},
+        "Trombone": {"0": "Cannonball", "1": "Elkhart", "2":"Yamaha"},
+        "Trumpet": {"0": "Bach", "1": "Carol Brass", "2":"Yamaha"},
+        "Tuba": {"0": "Yamaha"}   
+    }
+]

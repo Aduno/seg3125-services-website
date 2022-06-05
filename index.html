@@ -1,11 +1,119 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>SEG3125 Project</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="carousel.css">
+        <script type="module" src="app.js"></script>
     </head>
     <body>
-        <h1>Music</h1>
+        <div class="container-fluid">
+            <div class="row" id="top-bar">
+                <!-- Logo and name -->
+                <a class="col-6" href="index.html">
+                    <div class="logo-left">
+                        <img src="/img/Tuba.svg">
+                        <h3 class="logo-text">UO Instrument Services</h3>
+                    </div>
+                </a>
+                <div class="col-6" href="index.html">
+                    <div class="logo-right">
+                        <!-- Login -->
+                        <a href="pages/login.html"><img src="/img/user.svg"></a>
+                        <!-- French/English button -->
+                        <a href="#"><h3 class="language-toggle">Fr</h3></a>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand">
+                <ul class="nav navbar-nav">
+                    <li class="active" id="home"><a href="index.html">Home</a></li>
+                    <li class="nav-item dropdown" id="services">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" href="#">Services</a> 
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a class="dropdown-text" href="/pages/rental.html">Rental</a></li>
+                            <li class="dropdown-item"><a class="dropdown-text"href="/pages/lessons.html">Lessons</a></li>
+                            <li class="dropdown-item"><a class="dropdown-text"href="/pages/repair.html">Repair</a></li>
+                        </ul>
+                    </li>
+                    <li class="active" id="team"><a href="pages/team.html">Our team</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="row" id="main-container">
+            <div class="col-9" id="main">
+                <div id="aboutus-title"><h1 class="fw-bold">About us</h1></div>
+                <div class="container" id="aboutus-element">
+                    <div class="aboutus-img-container">
+                        <img class="rounded" id="aboutus-img" src="img/aboutus.jpg">
+                    </div>
+                    <p id="aboutus-text" style="padding-right:1%;">
+                        Welcome to the UOttawa instrument services! We provide affordable and competitive
+                        prices for the following services: <br>
+                        - Rental <br>
+                        - Repair <br>
+                        - Lessons <br>
+                        Please click on the Services button above to book a service and for additional details.
+                        For any inqueries or evalutions, please contact us by email, phone, or visit in person with
+                        the information provided under the map.
+                    </p>
+                </div>
+                <div class="row" id="promo">
+                    <!-- Promo 1  -->
+                    <a class="card container" href="pages/rental.html">
+                        <img class="card-img" src="img/clarinet.jpg">
+                        <div class="card-body">
+                            <h4 class="card-title fw-bold">10% off on rentals!</h4>
+                        </div>
+                    </a>
+                    <a class="card container" href="pages/lessons.html">
+                        <img class="card-img" src="/img/cello.jpeg">
+                        <div class="card-body">
+                            <h4 class="card-title fw-bold">Cello Lessons available now!</h4>
+                        </div>
+                    </a>
+                    <a class="card container" href="/pages/repair.html">
+                        <img class="card-img" src="img/violin.jpg">
+                        <div class="card-body">
+                            <h4 class="card-title fw-bold">Upto $25 off repairs!</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-3" id="info">
+                <div id="hours-title"><h2 class="fw-bold">Working hours</h2></div>
+                <ul class="container" id="hours-table">
+                    <li class="time-element">Monday: 9am - 6pm</li>
+                    <li class="time-element">Tuesday: 9am - 6pm</li>
+                    <li class="time-element">Wednesday: 9am - 6pm</li>
+                    <li class="time-element">Thursday: 9am - 6pm</li>
+                    <li class="time-element">Friday: 9am - 6pm</li>
+                    <li class="time-element">Saturday: 10am - 5pm</li>
+                    <li class="time-element">Sunday: Closed</li>
+                </ul>
+                <div class="container" id="map"></div>
+                <div class="container"id="contact-container">
+                    <p>75 Laurier Ave, E, Ottawa</p>
+                    <p>ON, K1N 6N5</p>
+                    <p>1-592-2095-1903</p>
+                    <p>uoinstruments@uottawa.ca</p>
+                    <div id="socials">
+                        <a href="https://www.instagram.com/?hl=en"><img src="img/instagram.svg"></a>
+                        <a href="https://www.facebook.com/"><img src="img/book.svg"></a>
+                        <a href="https://twitter.com/?lang=en"><img src="img/witter.svg"></a>
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="img/youtube.svg"></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_duJQjoCoAg4OKNCMMq4g3PnG0dqKwW0&callback=initMap"
+        ></script> 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -1,0 +1,50 @@
+html{
+    overflow-y:hidden;
+}
+.input-group-append {
+    cursor: pointer;
+  }
+  
+form{
+    padding: 5vh 0 0 3vw;
+}
+
+.input-group{
+    width: 40%;
+}
+button{
+    height: 100%;
+}
+
+.drop-container{
+    justify-content: left;
+    display:flex;
+    flex-direction: column;
+    width:40%;
+    margin-left:0;
+}
+#inst-toggle{
+    color:rgb(0, 0, 0);
+    border: 1px;
+    border-color: rgb(189, 189, 189);
+    border-style: solid;
+    border-radius: 5px;
+    padding-right: 10px;
+}
+#submit-btn{
+    height: 7%;
+}
+/* Rental info */
+.title{
+    padding: 3vh 0;
+    text-align: center;
+}
+
+.inst-item{
+    padding-bottom: 0.5rem;
+}
+@media screen and (max-width: 900px){
+    html{
+        overflow-y: scroll;
+    }
+}
