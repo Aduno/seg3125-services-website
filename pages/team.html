@@ -89,11 +89,18 @@
                     slidesToScroll: 1,
                     });
                 }
+                $.getJSON("../text/members.json", function(json){ 
+                        $.each(json[0], function(key, data){
+                            $("#member-intro").text(data['intro']);
+                            $("#member-name").text(key);
+                        })
+                });
                 $('.slider').on('afterChange', function(){
                     var id = $('.slick-current').attr("data-slick-index");
                     $.getJSON("../text/members.json", function(json){ 
-                        $("#member-intro").text(json[0][id]);
-                        $("#member-name").text(json[1][id]);
+                        var name = json[1][id];
+                        $("#member-intro").text(json[0][name]['intro']);
+                        $("#member-name").text(name);
                     });
                 });
 
@@ -109,15 +116,10 @@
                     'width': '100px',
                     'z-index': '10',
                 });
-
             });
+            
           </script>
-          <script type="text/javascript">
-              $.getJSON("../text/members.json", function(json){
-                  $("#member-intro").text(json[0][0]);
-                  $("#member-name").text(json[1][0]);
-              })
-          </script>
+          
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     </body>
 </html>

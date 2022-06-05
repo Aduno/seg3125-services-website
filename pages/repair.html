@@ -69,7 +69,7 @@
                         <label for="time" class="form-label">Time</label>
                         <div><input id="datetimepicker" class="user-input" type="text"></div>
                     </div>
-                    <div class="container-fluid" id="time-container">
+                    <div class="container-fluid" id="detail-container">
                         <label for="repair" class="form-label">Details</label>
                         <div><textarea id="repair-input" class="user-input"></textarea></div>
                     </div>
@@ -131,14 +131,10 @@
         <link rel="stylesheet" type="text/css" href="../css/jquery.datetimepicker.css">
         <script src="../scripts/jquery.datetimepicker.full.js"></script>
         <script>
-            function Ascending_sort(a, b) {
-                return ($(b).text().toUpperCase()) < 
-                    ($(a).text().toUpperCase()) ? 1 : -1; 
-            }
+
             let current = new Date();
             current.setTime(current.getTime() + (60*60*1000)); // Rounds the time to the next hour 
             current.setMinutes(0);
-            console.log(current);
             $(document).ready(function(){
                 $('#datetimepicker').datetimepicker({
                 datepicker:true,
@@ -147,7 +143,17 @@
                 });
                 $.getJSON("../text/repair-items.json", function(json){ 
                     var options = $('#inst-menu');
+                    var items = json[0];
+                   var list = new Array;
                     $.each(json[0], function(key, data){
+                        list.push(data);
+                    });
+                    list.sort(function(a, b) {
+                        if (a< b) return -1;
+                        if (a > b) return 1;
+                        return 0;
+                    });
+                    $.each(list, function(i, data){
                         options.append($("<option />").text(data));
                     });
                 });
