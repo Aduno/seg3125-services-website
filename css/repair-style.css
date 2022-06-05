@@ -1,0 +1,41 @@
+html{
+    overflow-y:hidden;
+}
+.input-group-append {
+    cursor: pointer;
+  }
+  
+form{
+    height:100%;
+    padding: 5vh 0 0 3vw;
+}
+
+.drop-container{
+    justify-content: left;
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    width:40%;
+    margin-left:0;
+}
+#repair-input{
+    width: 50%;
+    height: 10vh;
+}
+#submit-btn{
+    width: fit-content;
+    margin: 3vh 0;
+}
+
+.inst-item{
+    padding: 0.5rem;
+}
+@media screen and (max-width: 900px){
+    html{
+        overflow-y: scroll;
+    }
+    #repair-input{
+        width: 90%;
+        height: 10vh;
+    }
+}

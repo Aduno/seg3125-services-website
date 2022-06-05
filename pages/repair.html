@@ -25,7 +25,7 @@
                         <!-- Login -->
                         <a href="login.html"><img src="../img/user.svg"></a>
                         <!-- French/English button -->
-                        <a href="#"><h3 class="language-toggle">Fr</h3></a>
+                        <a href="login.html"><h3 class="language-toggle">Fr</h3></a>
                     </div>
                 </div>
             </div>
@@ -48,11 +48,10 @@
             <!-- Form -->
             <div class="container-fluid"id="main">
                 <form>
-                    <div class="container-fluid drop-container">
+                    <div class="container-fluid" id="inst-container">
                         <label for="inst" class="form-label">Select instrument</label>
-                        <select id="inst-menu">
-                            
-                        </select>
+                        <div><select id="inst-menu">
+                        </select></div>
                     </div> 
                     <div class="container-fluid" id="name-container">
                         <label for="name" class="form-label">Name</label>
@@ -67,12 +66,12 @@
                         <div><input class="user-input" type="text" id="number"></div>
                     </div>
                     <div class="container-fluid" id="time-container">
-                        <label>Time</label>
-                        <div><input id="datetimepicker" type="text"></div>
+                        <label for="time" class="form-label">Time</label>
+                        <div><input id="datetimepicker" class="user-input" type="text"></div>
                     </div>
                     <div class="container-fluid" id="time-container">
                         <label for="repair" class="form-label">Details</label>
-                        <div><textarea id="repair-input"></textarea></div>
+                        <div><textarea id="repair-input" class="user-input"></textarea></div>
                     </div>
                     <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
                 </form>
@@ -84,17 +83,16 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="popupModalLabel">Confirmation</h5>
+                  <h5 class="modal-title fw-bold" id="popupModalLabel">Confirmation</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                   <h5 id="modal-inst"></h5>
-                  <h5 id="modal-brand"></h5>
                   <h5 id="modal-name"></h5>
                   <h5 id="modal-email"></h5>
                   <h5 id="modal-number"></h5>
-                  <h5 id="modal-rent"></h5>
-                  <h5 id="modal-return"></h5>
+                  <h5 id="modal-details"></h5>
+                  <h5 id="modal-dropoff"></h5>
                   <h5 class="fw-bold" id="modal-price"></h5>
                 </div>
                 <div class="modal-footer">
@@ -108,11 +106,15 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="confirmedModalLabel">Confirmed</h5>
+                  <h5 class="modal-title fw-bold" id="confirmedModalLabel">Confirmed</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                  <p>A confirmation email has been sent to your email</p>
+                  <p class="text-center">Our technician will contact you via email with a quote as soon as possible.</p>
+                  <p class="text-center">If you have any questions, pleause contact us at</p>
+                  <p class="text-center">1-592-2095-1903</p>
+                  <p class="text-center">or</p>
+                  <p class="text-center">uoinstruments@uottawa.ca</p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -129,14 +131,50 @@
         <link rel="stylesheet" type="text/css" href="../css/jquery.datetimepicker.css">
         <script src="../scripts/jquery.datetimepicker.full.js"></script>
         <script>
-            $('#datetimepicker').datetimepicker({
-            datepicker:true,
-            minDate: '0',
-            allowTimes:[
-            '12:00', '13:00', '15:00',
-            '17:00', '17:05', '17:20', '19:00', '20:00'
-            ]
-            });
+            function Ascending_sort(a, b) {
+                return ($(b).text().toUpperCase()) < 
+                    ($(a).text().toUpperCase()) ? 1 : -1; 
+            }
+            let current = new Date();
+            current.setTime(current.getTime() + (60*60*1000)); // Rounds the time to the next hour 
+            current.setMinutes(0);
+            console.log(current);
+            $(document).ready(function(){
+                $('#datetimepicker').datetimepicker({
+                datepicker:true,
+                minDate: '0',
+                value: current
+                });
+                $.getJSON("../text/repair-items.json", function(json){ 
+                    var options = $('#inst-menu');
+                    $.each(json[0], function(key, data){
+                        options.append($("<option />").text(data));
+                    });
+                });
+                $('#submit-btn').click(function(event){ // Setting up listener and popup 
+                event.preventDefault();
+                if(!$('#name').val() ||!$('#email').val()|| !$('#repair-input').val()){
+                    alert('Please fill out the name, email, and details section');
+                }
+                else{
+                // Populating all the info
+                $('#modal-inst').text('Instrument: '+$('#inst-menu').val());
+                $('#modal-name').text('Name: '+$('#name').val());
+                $('#modal-email').text('Email: '+$('#email').val());
+                $('#modal-number').text('Phone Number: '+$('#number').val());
+                $('#modal-number').text('Phone Number: '+$('#number').val());
+                $('#modal-details').text('Details: '+$('#repair-input').val());
+                $('#modal-dropoff').text('Drop off: '+$('#datetimepicker').val());
+                $('#popup').modal('show');
+                }
+                });
+
+                $('#confirm-btn').click(function(event){
+                    event.preventDefault();
+                    $('#popup').modal('toggle'); // Closing previous popup
+                    $('#confirmed').modal('show'); // Opening confirmation page
+                })
+            })
         </script>
     </body>
 </html>

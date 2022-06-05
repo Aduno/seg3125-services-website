@@ -12,9 +12,6 @@ form{
 .input-group{
     width: 40%;
 }
-button{
-    height: 100%;
-}
 
 .drop-container{
     justify-content: left;
@@ -32,7 +29,8 @@ button{
     padding-right: 10px;
 }
 #submit-btn{
-    height: 7%;
+    width:fit-content;
+    margin: 3vh 0;
 }
 /* Rental info */
 .title{

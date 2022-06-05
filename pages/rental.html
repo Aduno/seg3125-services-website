@@ -25,7 +25,7 @@
                         <!-- Login -->
                         <a href="login.html"><img src="../img/user.svg"></a>
                         <!-- French/English button -->
-                        <a href="#"><h3 class="language-toggle">Fr</h3></a>
+                        <a href="login.html"><h3 class="language-toggle">Fr</h3></a>
                     </div>
                 </div>
             </div>
@@ -111,7 +111,7 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="popupModalLabel">Confirmation</h5>
+                  <h5 class="modal-title fw-bold" id="popupModalLabel">Confirmation</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -229,7 +229,7 @@
                 updatePrice();
             });
 
-            $('.user-input').val(""); // Clearing out input spaces (The datetime js is polluting the input tags with dates)
+            // $('.user-input').val(""); // Clearing out input spaces (The datetime js is polluting the input tags with dates)
 
             $('#submit-btn').click(function(event){ // Setting up listener and popup 
                 event.preventDefault();
@@ -242,7 +242,7 @@
                 $('#modal-brand').text('Brand: '+$('#brand-menu').val());
                 $('#modal-name').text('Name: '+$('#name').val());
                 $('#modal-email').text('Email: '+$('#email').val());
-                $('#modal-number').text('Number: '+$('#number').val());
+                $('#modal-number').text('Phone Number: '+$('#number').val());
                 $('#modal-rent').text('Rent Date: '+$('#start-picker').val());
                 $('#modal-return').text('Return Date: '+$('#end-picker').val());
                 $('#modal-price').text('Total price: '+$('#final-price').text());
