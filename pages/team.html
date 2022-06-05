@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../style.css">
-        <link rel="stylesheet" href="../team-style.css">
+        <link rel="stylesheet" href="../css/team-style.css">
     </head>
     <body>
         <div class="container-fluid">
@@ -16,14 +16,14 @@
                 <!-- Logo and name -->
                 <a class="col-6" href="../index.html">
                     <div class="logo-left">
-                        <img src="img/Tuba.svg">
+                        <img src="../img/Tuba.svg">
                         <h3 class="logo-text">UO Instrument Services</h3>
                     </div>
                 </a>
                 <div class="col-6" href="../index.html">
                     <div class="logo-right">
                         <!-- Login -->
-                        <a href="login.html"><img src="img/user.svg"></a>
+                        <a href="login.html"><img src="../img/user.svg"></a>
                         <!-- French/English button -->
                         <a href="#"><h3 class="language-toggle">Fr</h3></a>
                     </div>
@@ -47,19 +47,19 @@
         <div id="team-main">
             <div class="row slider">
                 <div class="team-member">
-                    <img src="img/team/2.png">
+                    <img src="../img/team/2.png">
                 </div>
                 <div class="team-member">
-                    <img class="center"src="img/team/1.png">
+                    <img class="center"src="../img/team/1.png">
                 </div>
                 <div class="team-member">
-                    <img src="img/team/3.png">
+                    <img src="../img/team/3.png">
                 </div>
                 <div class="team-member">
-                    <img src="img/team/4.png">
+                    <img src="../img/team/4.png">
                 </div>
                 <div class="team-member">
-                    <img  src="img/team/5.png">
+                    <img  src="../img/team/5.png">
                 </div>
             </div>
             <div id="member-details">
@@ -90,7 +90,7 @@
                 }
                 $('.slider').on('afterChange', function(){
                     var id = $('.slick-current').attr("data-slick-index");
-                    $.getJSON("/text/members.json", function(json){ 
+                    $.getJSON("../text/members.json", function(json){ 
                         $("#member-intro").text(json[0][id]);
                         $("#member-name").text(json[1][id]);
                     });
@@ -116,7 +116,7 @@
             });
           </script>
           <script type="text/javascript">
-              $.getJSON("/text/members.json", function(json){
+              $.getJSON("../text/members.json", function(json){
                   $("#member-intro").text(json[0][0]);
                   $("#member-name").text(json[1][0]);
               })
