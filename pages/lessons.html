@@ -113,7 +113,7 @@
                     </div>
                     
                     <label for="price" class="form-label fw-bold">Total Price</label>
-                    <h5 class="fw-bold" id="final-price"></h5>
+                    <h6 class="fw-bold" id="final-price"></h6>
                     <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
                 </form>
             </div>
@@ -139,11 +139,11 @@
             </div>
             <div class="modal-body">
               <h5 id="modal-inst"></h5>
-              <h5 id="modal-instructor"></h5>
+              <h5 id="modal-istr"></h5>
               <h5 id="modal-name"></h5>
               <h5 id="modal-email"></h5>
               <h5 id="modal-number"></h5>
-              <h5 id="modal-date"></h5>
+              <h5 id="modal-time"></h5>
               <h5 class="fw-bold" id="modal-price"></h5>
             </div>
             <div class="modal-footer">
@@ -180,13 +180,14 @@
     <link rel="stylesheet" type="text/css" href="../css/jquery.datetimepicker.css">
     <script src="../scripts/jquery.datetimepicker.full.js"></script>
     <script>
-        function fillIstrMenu(){
+        function fillIstrMenu(_callback){
             $.getJSON("../text/members.json", function(json){
                var istr = $('#istr-menu');
                istr.empty();
                $.each(json[0], function(key, data){
                 istr.append($("<option />").text(key));
                });
+               _callback();
             });
         }
         function fillInstMenu(){
@@ -194,43 +195,53 @@
             $.getJSON('../text/members.json', function(json){
                 var inst = $('#inst-menu');
                 inst.empty();
+                console.log(json);
+                console.log(name);
                 $.each(json[0][name]['lesson-inst'], function(key, data){
-                    inst.append($("<option />").text(data));
+                    inst.append($("<option />").text(key));
                });
+               updatePrice();
+            });
+        }
+        function updatePrice(){
+            var name = $('#istr-menu').val();
+            var istr = $('#inst-menu').val();
+            var price = 0;
+            $.getJSON('../text/members.json', function(json){
+                price = json[0][name]['lesson-inst'][istr];
+                $('#final-price').text(price);
             });
         }
         let current = new Date();
         current.setTime(current.getTime() + (60*60*1000)); // Rounds the time to the next hour 
         current.setMinutes(0);
         $(document).ready(function(){
-            fillIstrMenu(); // Initalize the instructor list
-            setTimeout(
-                function(){
-                    fillInstMenu();
-                }
-            , 100);
-            
+            fillIstrMenu(fillInstMenu); // Init page
+
             $('#istr-menu').change(function(){ // Update inst list each time instructor is changed
                 fillInstMenu();
             })
+            $('#inst-menu').change(function(){
+                updatePrice();
+            })
             $('#datetimepicker').datetimepicker({ // Setting up time picker
-                datepicker:true,
-                minDate: '0',
-                value: current
-                });
+                datepicker:false,
+                value: "10:25"
+            });
             $('#submit-btn').click(function(event){ // Setting up listener and popup 
                 event.preventDefault();
-                if(!$('#name').val() ||!$('#email').val()){
-                    alert('Please fill out the name and email section');
+                if(!$('#name').val() ||!$('#email').val()||$('input[name="day"]:checked').val()==undefined){
+                    alert('Please fill out the name, email, and date section');
                 }
                 else{
                 // Populating popup
                 $('#modal-inst').text('Instrument: '+$('#inst-menu').val());
+                $('#modal-istr').text('Instructor: '+$('#istr-menu').val());
                 $('#modal-name').text('Name: '+$('#name').val());
                 $('#modal-email').text('Email: '+$('#email').val());
                 $('#modal-number').text('Phone Number: '+$('#number').val());
-                $('#modal-number').text('Phone Number: '+$('#number').val());
-                $('#modal-dropoff').text('Drop off: '+$('#datetimepicker').val());
+                $('#modal-time').text('Lesson time: '+$('input[name="day"]:checked').val()+', '+$('#datetimepicker').val());
+                $('#modal-price').text('Total price: '+$('final-price').val());
                 $('#popup').modal('show');
                 }
                 });

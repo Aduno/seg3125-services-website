@@ -6,12 +6,8 @@
                 "": ""
             },
             "lesson-inst": {
-                "0": "Violin",
-                "1": "Guitar"
-            },
-            "rate": {
-                "0": "42",
-                "1": "35"
+                "Violin":"42",
+                "Guitar": "35"
             }
         },
         "Sean": {
@@ -20,10 +16,7 @@
                 
             },
             "lesson-inst": {
-                "0":"Drums"
-            },
-            "rate": {
-                "0": "66"
+                "Drums":"66"
             }
         },
         "Melanie": {
@@ -32,12 +25,8 @@
 
             },
             "lesson-inst": {
-                "0":"Music theory",
-                "1": "Piano"
-            },
-            "rate": {
-                "0": "34",
-                "1": "50"
+                "Music theory": "34",
+                "Piano": "50"
             }
         },
         "Salma": {
@@ -46,16 +35,10 @@
 
             },
             "lesson-inst": {
-                "0":"Cello",
-                "1": "Guitar",
-                "2": "Music theory",
-                "3": "Vocal"
-            },
-            "rate": {
-                "0": "94",
-                "1": "25",
-                "2": "34",
-                "3": "50"
+                "Cello": "94",
+                "Guitar": "25",
+                "Music theory": "34",
+                "Vocal":"50"
             }
         },
         "William": {
@@ -64,10 +47,7 @@
                 
             },
             "lesson-inst": {
-                "0":"Trumpet"
-            },
-            "rate": {
-                "0": "58"
+                "Trumpet": "58"
             }
         }
     },
