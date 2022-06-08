@@ -90,8 +90,10 @@
                     });
                 }
                 $.getJSON("../text/members.json", function(json){ 
-                        $("#member-intro").text(json[0]['Jason']['intro']);
-                        $("#member-name").text("Jason");
+                        var id = $('.slick-current').attr("data-slick-index");
+                        var name = json[1][id];
+                        $("#member-intro").text(json[0][name]['intro']);
+                        $("#member-name").text(name);
                 });
                 $('.slider').on('afterChange', function(){
                     var id = $('.slick-current').attr("data-slick-index");
