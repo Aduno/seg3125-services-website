@@ -13,6 +13,18 @@ form{
     width:40%;
     margin-left:0;
 }
+#info{
+    background-color: rgba(189, 189, 189, 0.7);
+}
+
+#istr-img{
+    margin: 5vh 0;
+    width: 60%;
+    height: auto;
+}
 @media screen and (max-width: 900px){
-    
+    #info{
+        padding: 5vh 0;
+        background-color: white;
+    }
 }

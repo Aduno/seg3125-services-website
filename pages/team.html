@@ -17,7 +17,7 @@
                 <a class="col-6" href="../index.html">
                     <div class="logo-left">
                         <img src="../img/Tuba.svg">
-                        <h3 class="logo-text">UO Instrument Services</h3>
+                        <h3 class="logo-text fw-bold">UO Instrument Services</h3>
                     </div>
                 </a>
                 <div class="col-6" href="../index.html">
@@ -44,22 +44,22 @@
                 </ul>
             </nav>
         </div>
-        <div id="team-main">
+        <div id="main">
             <div class="row slider">
                 <div class="team-member">
-                    <img src="../img/team/2.png">
+                    <img src="../img/team/William.png">
                 </div>
                 <div class="team-member">
-                    <img class="center"src="../img/team/1.png">
+                    <img class="center"src="../img/team/Jason.png">
                 </div>
                 <div class="team-member">
-                    <img src="../img/team/3.png">
+                    <img src="../img/team/Sean.png">
                 </div>
                 <div class="team-member">
-                    <img src="../img/team/4.png">
+                    <img src="../img/team/Melanie.png">
                 </div>
                 <div class="team-member">
-                    <img  src="../img/team/5.png">
+                    <img  src="../img/team/Salma.png">
                 </div>
             </div>
             <div id="member-details">
@@ -90,10 +90,8 @@
                     });
                 }
                 $.getJSON("../text/members.json", function(json){ 
-                        $.each(json[0], function(key, data){
-                            $("#member-intro").text(data['intro']);
-                            $("#member-name").text(key);
-                        })
+                        $("#member-intro").text(json[0]['Jason']['intro']);
+                        $("#member-name").text("Jason");
                 });
                 $('.slider').on('afterChange', function(){
                     var id = $('.slick-current').attr("data-slick-index");

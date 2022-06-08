@@ -1,3 +1,6 @@
+*{
+    font-family: 'Tiro Kannada', serif;
+}
 html{
     height: 100vh;
     overflow-x: hidden;
