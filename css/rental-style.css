@@ -41,6 +41,9 @@ form{
 .inst-item{
     padding-bottom: 0.5rem;
 }
+#info{
+    background-color: rgba(189, 189, 189, 0.7);
+}
 @media screen and (max-width: 900px){
     html{
         overflow-y: scroll;
