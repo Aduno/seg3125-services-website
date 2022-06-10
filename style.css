@@ -171,7 +171,7 @@ body{
 /* **Work hours section */
 #info{ 
     padding-top:2%;
-    background-color: rgb(153, 153, 153); ;
+    background-color: rgba(153, 153, 153, 0.7); ;
     position: relative;
 }
 
@@ -210,7 +210,7 @@ body{
     padding: 5% 2%;
 }
 #promo{
-    padding-top: 3vh;
+    padding: 3vh 2vw 0 2vw;
 }
 .card{
     width: 30%;
@@ -263,6 +263,10 @@ p{
     /* Changning it to verticle view*/
     #main-container{
         display: inline;
+    }
+    #index-main{
+        padding-top: 4vh;
+        width: 100%;
     }
     #map{
         height: 200px;

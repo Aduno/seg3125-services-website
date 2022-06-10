@@ -44,6 +44,25 @@ form{
 #info{
     background-color: rgba(189, 189, 189, 0.7);
 }
+
+#inst-info{
+    
+    display: flex;
+    align-items: center;
+}
+#img-container{
+    background-color: white;
+    border-radius: 15px;
+    margin: 0 15%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+}
+#inst-img{
+    align-self: center;
+    height:fit-content;
+    width: 60%;
+}
 @media screen and (max-width: 900px){
     html{
         overflow-y: scroll;
